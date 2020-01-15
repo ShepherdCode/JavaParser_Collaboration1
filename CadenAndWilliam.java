@@ -51,12 +51,13 @@ public class CadenAndWilliam
         try {
             jp.openFile();
             jp.breakLineByLine();
-            jp.printout();
         } catch (FileNotFoundException e) {
             System.err.println("ERROR: cannot open "+jp.getFilename());
         } catch (IOException e) {
             System.err.println("ERROR: while reading "+jp.getFilename());
         }
+        //jp.alphabetizeArray();
+        jp.printout();
     }   
     /**
      * Take input from the reader.
