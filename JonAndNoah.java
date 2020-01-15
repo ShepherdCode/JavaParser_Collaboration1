@@ -1,7 +1,7 @@
 
 /**
  * Write a description of class JonAndNoah here.
- *
+ * Wuzzup
  * @author (your name)
  * @version (a version number or a date)
  */
