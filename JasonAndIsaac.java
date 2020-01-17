@@ -7,13 +7,14 @@ import java.util.*;
  * JavaParser.
  * Parse a Java program into individual words.
  *
- * @author Jason Miller
+ * @author Jason Miller Editors: Isaac and Jason
  * @version 1.0
  */
 public class JasonAndIsaac {
     BufferedReader reader;
     String filename;
     String delimiters = " ";
+    ArrayList<String> wordsArray = new ArrayList<String>();
 
     /**
      * Constructor for objects of class JavaParser.
@@ -47,15 +48,18 @@ public class JasonAndIsaac {
      * @param No parameter is required.
      */
     public static void main (String[] args) {
-        JavaParser jp = new JavaParser("JavaParser.java");
+        JasonAndIsaac ji = new JasonAndIsaac("JasonAndIsaac.java");
         try {
-            jp.openFile();
-            jp.printLineByLine();
+            ji.openFile();
+            ji.printLineByLine();
         } catch (FileNotFoundException e) {
-            System.err.println("ERROR: cannot open "+jp.getFilename());
+            System.err.println("ERROR: cannot open "+ji.getFilename());
         } catch (IOException e) {
-            System.err.println("ERROR: while reading "+jp.getFilename());
+            System.err.println("ERROR: while reading "+ji.getFilename());
         }
+        ji.alphabetizeArray();
+        ji.printout();
+        
     }   
     /**
      * Take input from the reader.
@@ -69,7 +73,7 @@ public class JasonAndIsaac {
             do {  
                 line=reader.readLine();
                 if (line != null) {
-                    printWordByWord(line);
+                    arrayWordByWord(line);
                 }
             } while (line != null);
         }
@@ -79,18 +83,23 @@ public class JasonAndIsaac {
      * Use the delimiter that belongs to this.
      * On each word, call printout().
      */
-    public void printWordByWord (String oneline) {
+    public void arrayWordByWord (String oneline) {
         String word;
         StringTokenizer splitter = new StringTokenizer (oneline,delimiters);
         while (splitter.hasMoreTokens()) {
             word = splitter.nextToken();
-            printout(word);
+            wordsArray.add(word);
+        }
+    }
+    public void printout () {
+        for (int i = 0; i < wordsArray.size(); i++){
+            System.out.println(wordsArray.get(i));
         }
     }
     /**
      * Send the given string to the console.
      */
-    public void printout (String s) {
-        System.out.println(s);
+    public void alphabetizeArray () {
+        Collections.sort(wordsArray);
     }
 }
