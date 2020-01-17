@@ -4,13 +4,8 @@ import java.nio.*;
 /**
  * Program parses itself and sorts alphabetically.
  *
-<<<<<<< HEAD
- * @author 
- * @version 2
-=======
  * @author Jason Miller, Kurt Acker, Zachary Carpenter
- * @version 1.1
->>>>>>> 42479e6e82cd3b1fe3dbd1cf89638141871f5776
+ * @version 1.1.2
  */
 public class KurtAndZach
 {
