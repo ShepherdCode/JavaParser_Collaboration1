@@ -4,8 +4,8 @@ import java.nio.*;
 /**
  * Write a description of class KurtAndZach here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author 
+ * @version 2
  */
 public class KurtAndZach
 {
