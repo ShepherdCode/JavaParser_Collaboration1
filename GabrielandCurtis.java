@@ -1,33 +1,121 @@
-
+import java.io.*;
+import java.nio.*;
+import java.util.*;
 /**
- * Write a description of class GabrielandCurtis here.
+ * JavaParser.
+ * Parse a Java program into individual words.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Jason Miller
+ * @version 1.0
  */
-public class GabrielandCurtis
-{
-    // instance variables - replace the example below with your own
-    private int x;
-
+public class GabrielandCurtis {
+    BufferedReader reader;
+    String filename;
+    String delimiters = " ";
+    //String arrayOfWords [];
+    ArrayList<String> wordList = new ArrayList<String>();
     /**
-     * Constructor for objects of class GabrielandCurtis
+     * Constructor for objects of class JavaParser.
+     * @param filename Name of file to read. Current directory assumed.
      */
-    public GabrielandCurtis()
-    {
-        // initialise instance variables
-        x = 0;
+    public GabrielandCurtis(String filename) {
+        this.filename = filename;
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Show the filename associated with this class.
+     * @return filename that was given to the constructor.
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public String getFilename() {
+        return filename;
     }
+
+    /**
+     * Open the file associated with this class.
+     * If a file was already open, this would close it.
+     * @return true if the file could be opened.
+     */
+    public void openFile () throws FileNotFoundException {
+        reader = null;
+        File file = new File(filename);
+        FileReader fr = new FileReader(file);
+        reader = new BufferedReader(fr);
+    }
+
+    /**
+     * Demonstrates how to use this class.
+     * Parses this Java program.
+     * Assumes the program is in the current directory.
+     * @param No parameter is required.
+     */
+    public static void main (String[] args) {
+        GabrielandCurtis jp = new GabrielandCurtis("GabrielandCurtis.java");
+
+        try {
+            jp.openFile();
+            jp.printLineByLine();
+        } catch (FileNotFoundException e) {
+            System.err.println("ERROR: cannot open "+jp.getFilename());
+        } catch (IOException e) {
+            System.err.println("ERROR: while reading "+jp.getFilename());
+        }
+
+    }   
+
+    /**
+     * Take input from the reader.
+     * Break the input into lines.
+     * On each line, call printWordByWord().
+     * Do nothing unless openFile() has run successfully.
+     */
+    public void printLineByLine() throws IOException {
+        String line;
+        if (reader!=null) {
+            do {  
+                line =reader.readLine();
+                if (line != null) {
+                    printWordByWord(line);
+                }            
+            } while (line != null);
+        }
+        alphabetize();
+        printOut();
+    }
+
+    /**
+     * Break the given string into words.
+     * Use the delimiter that belongs to this.
+     * On each word, call printout().
+     */
+    public void printWordByWord (String oneline) {
+        String word;
+        StringTokenizer splitter = new StringTokenizer (oneline,delimiters);
+        while (splitter.hasMoreTokens()) {
+            word = splitter.nextToken();
+            wordList.add(word);
+        }    
+    }
+
+    /**
+     * Send the given string to the console.
+     */
+    public void printOut () {
+
+        //char arryOfWords [] = strings.toCharArray();
+        //Arrays.sort(arryOfWords);
+        //String nowAlphabetical = String.valueOf(arryOfWords);
+        //System.out.println(nowAlphabetical);
+        //for(int i = 0; i < arrayOfWords.size(); i = i + 1) {
+        //    System.out.println(arrayOfWords.get(i));
+        //}    
+        //Collections.sort(wordsArrays);
+        //System.out.println(strings);
+        for(int i = 0; i < wordList.size(); i++) {
+            System.out.println(wordList.get(i));   
+        } 
+    }
+
+    public void alphabetize() {
+     Collections.sort(wordList);   
+    }    
 }
