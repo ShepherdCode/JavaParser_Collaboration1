@@ -5,7 +5,7 @@ import java.nio.*;
  * Program parses itself and sorts alphabetically.
  *
  * @author Jason Miller, Kurt Acker, Zachary Carpenter
- * @version 1.1
+ * @version 1.1.2
  */
 public class KurtAndZach
 {
