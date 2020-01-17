@@ -1,9 +1,10 @@
 
 /**
- * Write a description of class AlexHeidi here.
+ * Alex Flamand and Heidi Reichert try the homework.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Alex Flamand
+ * @author Heidi Reichert
+ * @version 2
  */
 
 import java.io.*;
