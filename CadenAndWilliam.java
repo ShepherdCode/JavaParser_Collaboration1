@@ -90,7 +90,7 @@ public class CadenAndWilliam
         }
     }
     /**
-     * Send the given string to the console.
+     * Send the strings in wordsArray to the console.
      */
     public void printout () {
         for (int i = 0; i < wordsArray.size(); i++){
