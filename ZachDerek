@@ -11,22 +11,22 @@ import java.util.*;
  */
 public class JavaParser {
     BufferedReader reader;
-    String Zach&Derek;
+    String ZachDerek;
     String delimiters = " ";
 
     /**
      * Constructor for objects of class JavaParser.
-     * @param Zach&Derek Name of file to read. Current directory assumed.
+     * @param ZachDerek Name of file to read. Current directory assumed.
      */
     public JavaParser(String filename) {
         this.filename = filename;
     }
     /**
      * Show the filename associated with this class.
-     * @return Zach&Derek that was given to the constructor.
+     * @return ZachDerek that was given to the constructor.
      */
-    public String getZach&Derek() {
-        return Zach&Derek;
+    public String getZachDerek() {
+        return ZachDerek;
     }
     /**
      * Open the file associated with this class.
@@ -35,7 +35,7 @@ public class JavaParser {
      */
     public void openFile () throws FileNotFoundException {
         reader = null;
-        File file = new File(Zach&Derek);
+        File file = new File(ZachDerek);
         FileReader fr = new FileReader(file);
         reader = new BufferedReader(fr);
     }
