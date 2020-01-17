@@ -6,7 +6,7 @@ import java.util.*;
  * Write a description of class CadenAndWilliam here.
  *
  * @author Caden James & William Davis
- * @version 01/15/2020
+ * @version 01/17/2020
  */
 public class CadenAndWilliam
 {
@@ -56,7 +56,7 @@ public class CadenAndWilliam
         } catch (IOException e) {
             System.err.println("ERROR: while reading "+jp.getFilename());
         }
-        //jp.alphabetizeArray();
+        jp.alphabetizeArray();
         jp.printout();
     }   
     /**
@@ -90,11 +90,18 @@ public class CadenAndWilliam
         }
     }
     /**
-     * Send the given string to the console.
+     * Send the strings in wordsArray to the console.
      */
     public void printout () {
         for (int i = 0; i < wordsArray.size(); i++){
             System.out.println(wordsArray.get(i));
         }
     }
+    /**
+     * alphabetize the wordsArray array.
+     */
+    public void alphabetizeArray (){
+        Collections.sort(wordsArray);
+    }
+	// hi
 }

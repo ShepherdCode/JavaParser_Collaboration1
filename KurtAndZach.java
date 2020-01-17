@@ -2,10 +2,15 @@ import java.util.*;
 import java.io.*;
 import java.nio.*;
 /**
- * Write a description of class KurtAndZach here.
+ * Program parses itself and sorts alphabetically.
  *
+<<<<<<< HEAD
  * @author 
  * @version 2
+=======
+ * @author Jason Miller, Kurt Acker, Zachary Carpenter
+ * @version 1.1
+>>>>>>> 42479e6e82cd3b1fe3dbd1cf89638141871f5776
  */
 public class KurtAndZach
 {
