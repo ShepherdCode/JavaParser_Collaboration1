@@ -4,17 +4,18 @@ import java.nio.*;
 import java.util.*;
 
 /**
- * JavaParser.
- * Parse a Java program into individual words.
+ * Copied from JavaParser.
+ * Parses a Java program into individual words and sorts them alphabetically.
  *
- * @author Jason Miller
+ * @author Jason Miller, Aj & Jon Moody
  * @version 1.0
  */
-public class AjandJon {
+public class AjandJon{
     BufferedReader reader;
     String filename;
     String delimiters = " ";
-
+    ArrayList<String> words = new ArrayList<String>();
+    
     /**
      * Constructor for objects of class JavaParser.
      * @param filename Name of file to read. Current directory assumed.
@@ -61,6 +62,7 @@ public class AjandJon {
      * Take input from the reader.
      * Break the input into lines.
      * On each line, call printWordByWord().
+     * After all words have been read, sort the ArrayList in alphabetical order
      * Do nothing unless openFile() has run successfully.
      */
     public void printLineByLine() throws IOException {
@@ -72,25 +74,27 @@ public class AjandJon {
                     printWordByWord(line);
                 }
             } while (line != null);
+            Collections.sort(words, String.CASE_INSENSITIVE_ORDER);
+            System.out.println(words);
         }
     }
     /**
      * Break the given string into words.
      * Use the delimiter that belongs to this.
-     * On each word, call printout().
+     * On each word, call addToList().
      */
     public void printWordByWord (String oneline) {
         String word;
         StringTokenizer splitter = new StringTokenizer (oneline,delimiters);
         while (splitter.hasMoreTokens()) {
             word = splitter.nextToken();
-            printout(word);
+            addToList(word);
         }
     }
     /**
-     * Send the given string to the console.
+     * Send the given string to the Array List
      */
-    public void printout (String s) {
-        System.out.println(s);
+    public void addToList (String s) {
+        words.add(s);
     }
 }
