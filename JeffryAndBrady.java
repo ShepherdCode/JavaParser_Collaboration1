@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Write a description of class JeffryAndBrady here.
  *
- * @author (your name)
+ * @author Jeffry and Brady
  * @version (a version number or a date)
  */
 public class JeffryAndBrady
