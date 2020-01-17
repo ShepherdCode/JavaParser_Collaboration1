@@ -20,7 +20,7 @@ public class AlexHeidi {
      * Constructor for objects of class JavaParser.
      * @param filename Name of file to read. Current directory assumed.
      */
-    public JavaParser(String filename) {
+    public static void JavaParser(String filename) {
         this.filename = filename;
     }
 
@@ -131,3 +131,5 @@ public class AlexHeidi {
 }
     }
 }
+
+//WHY MUST WE SUFFER?
