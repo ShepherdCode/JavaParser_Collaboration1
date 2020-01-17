@@ -2,10 +2,10 @@
 /**
  * Alex Flamand and Heidi Reichert try the homework.
  * Most work done by Professor Jason Miller, insofar as parsing is concerned.
- *
+ * 
  * @author Alex Flamand
  * @author Heidi Reichert
- * @version 3
+ * @version 17 January 2020
  */
 
 import java.io.*;
@@ -16,12 +16,13 @@ public class AlexHeidi {
     BufferedReader reader;
     String filename;
     String delimiters = " ";
-
+    ArrayList<String> fileWords = new ArrayList<String>();
+    
     /**
-     * Constructor for objects of class JavaParser.
+     * Constructor for objects of class AlexHeidi.
      * @param filename Name of file to read. Current directory assumed.
      */
-    public static void JavaParser(String filename) {
+    public AlexHeidi(String filename) {
         this.filename = filename;
     }
 
@@ -46,27 +47,8 @@ public class AlexHeidi {
     }
 
     /**
-     * Demonstrates how to use this class.
-     * Parses this Java program.
-     * Assumes the program is in the current directory.
-     * @param No parameter is required.
-     */
-    public static void main (String[] args) {
-        JavaParser jp = new JavaParser("JavaParser.java");
-        try {
-            jp.openFile();
-            jp.printLineByLine();
-        } catch (FileNotFoundException e) {
-            System.err.println("ERROR: cannot open "+jp.getFilename());
-        } catch (IOException e) {
-            System.err.println("ERROR: while reading "+jp.getFilename());
-        }
-    }   
-
-    /**
      * Take input from the reader.
-     * Break the input into lines.
-     * On each line, call printWordByWord().
+     * Breaks the input into lines.
      * Do nothing unless openFile() has run successfully.
      */
     public void printLineByLine() throws IOException {
@@ -75,7 +57,7 @@ public class AlexHeidi {
             do {  
                 line=reader.readLine();
                 if (line != null) {
-                    printWordByWord(line);
+                    fillArray(line);
                 }
             } while (line != null);
         }
@@ -84,59 +66,58 @@ public class AlexHeidi {
     /**
      * Break the given string into words.
      * Use the delimiter that belongs to this.
-     * On each word, call printout().
+     * @param the strings within the file.
      */
-    public void printWordByWord (String oneline) {
+    public String breakApart (String oneline) {
         String word;
         StringTokenizer splitter = new StringTokenizer (oneline,delimiters);
         while (splitter.hasMoreTokens()) {
             word = splitter.nextToken();
-            printout(word);
+            return word;
         }
+        return "";
     }
-    
-     /**
-     * Add each string to a String array.
+
+    /**
+     * Add each broken-up word to an array list containing all words in the file.
      */
-    //String[] = new String[file.length];
-    public void fillAray (String oneword) {
-        String word;
-
-    //    while (splitter.hasMoreTokens()) {
-    //        word = splitter.nextToken();
-    //        printout(word);
-    //    }
+    public void fillArray (String word) {
+        fileWords.add(breakApart(word));
     }
 
-    public int compare (String input1, String input2) {
-        int difference = input1.compareTo(input2);
-        if(difference > 0) return 1;
-        if(difference < 0) return -1;
-        return 0;
+    /**
+     * Use the inbuilt Colllections.sort() method to sort the list in alphabetical order.
+     * Suggestion of the use of this method was stated out-loud in the class.
+     */
+    public void sortAlphabetically () {
+        Collections.sort(fileWords);
     }
 
     /**
      * Send the given string to the console.
      */
-    public void printout (String s) {
-        System.out.println(s);
+    public void print () {
+        for(int i=0; i<fileWords.size(); i++) {
+            System.out.println(fileWords.get(i));
+        }
     }
-    /**
-     * Add each string to a String array.
-     */
-    public void fillAray (String oneword) {
-        String word;
-        String fileWords[] = new String[filename.length()];
-	for(int i=0; i<filename.length(); i++) {
-    fileWords[i] = printWordByWord(oneword);
-}
-    }
-}
-<<<<<<< HEAD
 
-//WHY MUST WE SUFFER?
-=======
-// compare each word in String array with the next using the comparison method
-// rearrange in array
-// print out alphabetically, overriding the original print line-by-line
->>>>>>> 8629716a8f90b47afaa28722440affeb90f20724
+    /**
+     * Demonstrates how to use this class.
+     * Parses this Java program. Sorts all words into alphabetical order
+     * Assumes the program is in the current directory.
+     */
+    public static void main (String[] args) {
+        AlexHeidi ah = new AlexHeidi("AlexHeidi.java");
+        try {
+            ah.openFile();
+            ah.printLineByLine();
+            ah.sortAlphabetically();
+            ah.print();
+        } catch (FileNotFoundException e) {
+            System.err.println("Cannot open "+ah.getFilename());
+        } catch (IOException e) {
+            System.err.println("Error while reading "+ah.getFilename());
+        }
+    }   
+}
