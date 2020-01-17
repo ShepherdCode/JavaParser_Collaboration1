@@ -83,7 +83,7 @@ public class JonAndNoah {
         StringTokenizer splitter = new StringTokenizer (oneline,delimiters);
         while (splitter.hasMoreTokens()) {
             word = splitter.nextToken();
-            printout(word);
+            sortText(word);
         }
     }
     /**
@@ -91,5 +91,15 @@ public class JonAndNoah {
      */
     public void printout (String s) {
         System.out.println(s);
+    }
+    
+    /**
+    * Added method.
+    */
+    public void sortText (String word) {
+        ArrayList<String> text = new ArrayList<String>();
+        text.add(word);
+        Collections.sort(text);
+        System.out.println(text);
     }
 }
