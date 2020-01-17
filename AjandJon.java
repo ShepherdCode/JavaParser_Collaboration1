@@ -7,7 +7,7 @@ import java.util.*;
  * Copied from JavaParser.
  * Parses a Java program into individual words and sorts them alphabetically.
  *
- * @author Jason Miller, Aj & Jon Moody
+ * @author Jason Miller, Aj Apple & Jon Moody
  * @version 1.0
  */
 public class AjandJon{
