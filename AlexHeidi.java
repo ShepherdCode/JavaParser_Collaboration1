@@ -21,7 +21,7 @@ public class AlexHeidi {
      * Constructor for objects of class JavaParser.
      * @param filename Name of file to read. Current directory assumed.
      */
-    public JavaParser(String filename) {
+    public static void JavaParser(String filename) {
         this.filename = filename;
     }
 
@@ -132,6 +132,11 @@ public class AlexHeidi {
 }
     }
 }
+<<<<<<< HEAD
+
+//WHY MUST WE SUFFER?
+=======
 // compare each word in String array with the next using the comparison method
 // rearrange in array
 // print out alphabetically, overriding the original print line-by-line
+>>>>>>> 8629716a8f90b47afaa28722440affeb90f20724
