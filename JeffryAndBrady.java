@@ -3,23 +3,22 @@ import java.nio.*;
 import java.util.*;
 
 /**
- * Write a description of class CadenAndWilliam here.
+ * Write a description of class JeffryAndBrady here.
  *
- * @author Caden James & William Davis
- * @version 01/17/2020
+ * @author (your name)
+ * @version (a version number or a date)
  */
-public class CadenAndWilliam
+public class JeffryAndBrady
 {
     BufferedReader reader;
     String filename;
     String delimiters = " ";
-    ArrayList<String> wordsArray = new ArrayList<String>();
 
     /**
      * Constructor for objects of class JavaParser.
      * @param filename Name of file to read. Current directory assumed.
      */
-    public CadenAndWilliam(String filename) {
+    public JeffryAndBrady(String filename) {
         this.filename = filename;
     }
     /**
@@ -47,31 +46,52 @@ public class CadenAndWilliam
      * @param No parameter is required.
      */
     public static void main (String[] args) {
-        CadenAndWilliam jp = new CadenAndWilliam("CadenAndWilliam.java");
+        JeffryAndBrady jb = new JeffryAndBrady("JeffryAndBrady.java");
         try {
-            jp.openFile();
-            jp.breakLineByLine();
-        } catch (FileNotFoundException e) {
-            System.err.println("ERROR: cannot open "+jp.getFilename());
-        } catch (IOException e) {
-            System.err.println("ERROR: while reading "+jp.getFilename());
+            jb.openFile();
+            ArrayList<String> parsedFile = jb.buildWordList();
+            Collections.sort(parsedFile);
+            for (String word : parsedFile)
+            {
+            System.out.println(word);
         }
-        jp.alphabetizeArray();
-        jp.printout();
+        } catch (FileNotFoundException e) {
+            System.err.println("ERROR: cannot open "+jb.getFilename());
+        } catch (IOException e) {
+            System.err.println("ERROR: while reading "+jb.getFilename());
+        }
     }   
+    public ArrayList<String> buildWordList() throws IOException
+    {
+        ArrayList<String> entireFile = new ArrayList<String>();
+        String line;
+        if (reader!=null) {
+            do {  
+                line=reader.readLine();
+                if (line != null) {
+                    for (String word: splitLine(line)){
+                        entireFile.add(word);
+                    };
+                }
+            } while (line != null);
+        }
+        return entireFile;
+    }
     /**
      * Take input from the reader.
      * Break the input into lines.
      * On each line, call printWordByWord().
      * Do nothing unless openFile() has run successfully.
      */
-    public void breakLineByLine() throws IOException {
+    public void printLineByLine() throws IOException {
         String line;
         if (reader!=null) {
             do {  
                 line=reader.readLine();
                 if (line != null) {
-                    arrayWordByWord(line);
+                    for (String word: splitLine(line)){
+                    
+                    };
                 }
             } while (line != null);
         }
@@ -79,28 +99,22 @@ public class CadenAndWilliam
     /**
      * Break the given string into words.
      * Use the delimiter that belongs to this.
-     * On each word, add it to wordsArray.
+     * On each word, call printout().
      */
-    public void arrayWordByWord (String oneline) {
+    public ArrayList<String> splitLine (String oneline) {
+        ArrayList<String> wordList = new ArrayList<String>();
         String word;
         StringTokenizer splitter = new StringTokenizer (oneline,delimiters);
         while (splitter.hasMoreTokens()) {
             word = splitter.nextToken();
-            wordsArray.add(word);
+            wordList.add(word);
         }
+        return wordList;
     }
     /**
-     * Send the strings in wordsArray to the console.
+     * Send the given string to the console.
      */
-    public void printout () {
-        for (int i = 0; i < wordsArray.size(); i++){
-            System.out.println(wordsArray.get(i));
-        }
-    }
-    /**
-     * alphabetize the wordsArray array.
-     */
-    public void alphabetizeArray (){
-        Collections.sort(wordsArray);
+    public void printout (String s) {
+        System.out.println(s);
     }
 }

@@ -1,25 +1,25 @@
+import java.util.*;
 import java.io.*;
 import java.nio.*;
-import java.util.*;
-
 /**
- * Write a description of class CadenAndWilliam here.
+ * Write a description of class KurtAndZach here.
  *
- * @author Caden James & William Davis
- * @version 01/17/2020
+ * @author (your name)
+ * @version (a version number or a date)
  */
-public class CadenAndWilliam
+public class KurtAndZach
 {
+    // instance variables - replace the example below with your own
+    
     BufferedReader reader;
     String filename;
     String delimiters = " ";
-    ArrayList<String> wordsArray = new ArrayList<String>();
 
-    /**
+     /**
      * Constructor for objects of class JavaParser.
      * @param filename Name of file to read. Current directory assumed.
      */
-    public CadenAndWilliam(String filename) {
+    public KurtAndZach(String filename) {
         this.filename = filename;
     }
     /**
@@ -47,31 +47,29 @@ public class CadenAndWilliam
      * @param No parameter is required.
      */
     public static void main (String[] args) {
-        CadenAndWilliam jp = new CadenAndWilliam("CadenAndWilliam.java");
+        KurtAndZach kz = new KurtAndZach("KurtAndZach.java");
         try {
-            jp.openFile();
-            jp.breakLineByLine();
+            kz.openFile();
+            kz.printLineByLine();
         } catch (FileNotFoundException e) {
-            System.err.println("ERROR: cannot open "+jp.getFilename());
+            System.err.println("ERROR: cannot open "+kz.getFilename());
         } catch (IOException e) {
-            System.err.println("ERROR: while reading "+jp.getFilename());
+            System.err.println("ERROR: while reading "+kz.getFilename());
         }
-        jp.alphabetizeArray();
-        jp.printout();
-    }   
+    }
     /**
      * Take input from the reader.
      * Break the input into lines.
      * On each line, call printWordByWord().
      * Do nothing unless openFile() has run successfully.
      */
-    public void breakLineByLine() throws IOException {
+    public void printLineByLine() throws IOException {
         String line;
         if (reader!=null) {
             do {  
                 line=reader.readLine();
                 if (line != null) {
-                    arrayWordByWord(line);
+                    printWordByWord(line);
                 }
             } while (line != null);
         }
@@ -79,28 +77,26 @@ public class CadenAndWilliam
     /**
      * Break the given string into words.
      * Use the delimiter that belongs to this.
-     * On each word, add it to wordsArray.
+     * On each word, call printout().
      */
-    public void arrayWordByWord (String oneline) {
+    public void printWordByWord (String oneline) {
         String word;
         StringTokenizer splitter = new StringTokenizer (oneline,delimiters);
         while (splitter.hasMoreTokens()) {
             word = splitter.nextToken();
-            wordsArray.add(word);
+            alphabetically(word);
         }
     }
     /**
-     * Send the strings in wordsArray to the console.
+     * Sorts the given string alphabetically. 
+     * Sends the given string to the console.
      */
-    public void printout () {
-        for (int i = 0; i < wordsArray.size(); i++){
-            System.out.println(wordsArray.get(i));
-        }
+    public void alphabetically (String s) 
+    {
+        char[] javp = s.toCharArray();
+        Arrays.sort(javp);
+        String alphabeticalString = String.valueOf(javp);
+        System.out.println(alphabeticalString);
     }
-    /**
-     * alphabetize the wordsArray array.
-     */
-    public void alphabetizeArray (){
-        Collections.sort(wordsArray);
-    }
+    
 }
