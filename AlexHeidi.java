@@ -1,10 +1,11 @@
 
 /**
  * Alex Flamand and Heidi Reichert try the homework.
+ * Most work done by Professor Jason Miller, insofar as parsing is concerned.
  *
  * @author Alex Flamand
  * @author Heidi Reichert
- * @version 2
+ * @version 3
  */
 
 import java.io.*;
@@ -131,3 +132,6 @@ public class AlexHeidi {
 }
     }
 }
+// compare each word in String array with the next using the comparison method
+// rearrange in array
+// print out alphabetically, overriding the original print line-by-line
