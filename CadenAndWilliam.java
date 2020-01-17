@@ -56,7 +56,7 @@ public class CadenAndWilliam
         } catch (IOException e) {
             System.err.println("ERROR: while reading "+jp.getFilename());
         }
-        //jp.alphabetizeArray();
+        jp.alphabetizeArray();
         jp.printout();
     }   
     /**
@@ -96,5 +96,11 @@ public class CadenAndWilliam
         for (int i = 0; i < wordsArray.size(); i++){
             System.out.println(wordsArray.get(i));
         }
+    }
+    /**
+     * alphabetize the wordsArray array.
+     */
+    public void alphabetizeArray (){
+        Collections.sort(wordsArray);
     }
 }
