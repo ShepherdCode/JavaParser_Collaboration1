@@ -1,41 +1,113 @@
+import java.io.*;
+import java.nio.*;
 import java.util.*;
-import java.util.ArrayList;
+
 /**
- * Write a description of class Christopher here.
+ * JavaParser.
+ * Parse a Java program into individual words.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Jason Miller
+ * @version 1.0
  */
-public class ChristopherAndSamom extends JavaParser
-{
-    // instance variables - replace the example below with your own
-    private int x;
+public class ChristopherAndSamom {
+    BufferedReader reader;
+    String filename;
+    String delimiters = " ";
     ArrayList<String> ary = new ArrayList <String>();
     /**
-     * Constructor for objects of class Christopher
+     * Constructor for objects of class JavaParser.
+     * @param filename Name of file to read. Current directory assumed.
      */
-    public ChristopherAndSamom(String filename)
-    {
-        super(filename);
+    public ChristopherAndSamom(String filename) {
+        this.filename = filename;
     }
-
+    /**
+     * Show the filename associated with this class.
+     * @return filename that was given to the constructor.
+     */
+    public String getFilename() {
+        return filename;
+    }
+    /**
+     * Open the file associated with this class.
+     * If a file was already open, this would close it.
+     * @return true if the file could be opened.
+     */
+    public void openFile () throws FileNotFoundException {
+        reader = null;
+        File file = new File(filename);
+        FileReader fr = new FileReader(file);
+        reader = new BufferedReader(fr);
+    }
+    /**
+     * Demonstrates how to use this class.
+     * Parses this Java program.
+     * Assumes the program is in the current directory.
+     * @param No parameter is required.
+     */
+    public static void main (String[] args) {
+        ChristopherAndSamom jp = new ChristopherAndSamom("JavaParser.java");
+        try {
+            jp.openFile();
+            jp.printLineByLine();
+        } catch (FileNotFoundException e) {
+            System.err.println("ERROR: cannot open "+jp.getFilename());
+        } catch (IOException e) {
+            System.err.println("ERROR: while reading "+jp.getFilename());
+        }
+        jp.alphabitze();
+        jp.aryList();
+    }   
+    /**
+     * Take input from the reader.
+     * Break the input into lines.
+     * On each line, call printWordByWord().
+     * Do nothing unless openFile() has run successfully.
+     */
+    public void printLineByLine() throws IOException {
+        String line;
+        if (reader!=null) {
+            do {  
+                line=reader.readLine();
+                if (line != null) {
+                    printWordByWord(line);
+                }
+            } while (line != null);
+        }
+    }
+    /**
+     * Break the given string into words.
+     * Use the delimiter that belongs to this.
+     * On each word, call printout().
+     */
+    public void printWordByWord (String oneline) {
+        String word;
+        StringTokenizer splitter = new StringTokenizer (oneline,delimiters);
+        while (splitter.hasMoreTokens()) {
+            word = splitter.nextToken();
+            ary.add(word);
+        }
+    }
+    /**
+     * Send the given string to the console.
+     */
+    public void printout (String s) {
+        System.out.println(s);
+    }
     /**
     populates the array with strings
      */
     public void aryList()
     {
-
-        Collections.sort(ary);
-        for( int i=0; i < 0; i++){
-
+        for( int i=0; i < ary.size(); i++){
+            System.out.println(ary.get(i));
         }
 
     }
-
     /**
      * Adds the given card to the collection.
      */
-    public void addString() {
-        
+    public void alphabitze(){
+       Collections.sort(ary);
     }
 }
