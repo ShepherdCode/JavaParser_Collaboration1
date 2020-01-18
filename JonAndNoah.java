@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * JonAndNoah.
  * Parse a Java program into individual words.
- * Test sdagagfraewggr
+ * Test
  * @author Jonathan Katz and Noah Simmons
  * @version 1.0
  */
@@ -13,6 +13,7 @@ public class JonAndNoah {
     BufferedReader reader;
     String filename;
     String delimiters = " ";
+    ArrayList<String> text = new ArrayList<String>();
 
     /**
      * Constructor for objects of class JonAndNoah.
@@ -55,6 +56,8 @@ public class JonAndNoah {
         } catch (IOException e) {
             System.err.println("ERROR: while reading "+jp.getFilename());
         }
+        jp.arraySize();
+        jp.sortText();
     }   
     /**
      * Take input from the reader.
@@ -72,6 +75,8 @@ public class JonAndNoah {
                 }
             } while (line != null);
         }
+        
+        
     }
     /**
      * Break the given string into words.
@@ -83,7 +88,7 @@ public class JonAndNoah {
         StringTokenizer splitter = new StringTokenizer (oneline,delimiters);
         while (splitter.hasMoreTokens()) {
             word = splitter.nextToken();
-            sortText(word);
+            text.add(word);
         }
     }
     /**
@@ -96,10 +101,18 @@ public class JonAndNoah {
     /**
     * Added method.
     */
-    public void sortText (String word) {
-        ArrayList<String> text = new ArrayList<String>();
-        text.add(word);
+    public void sortText () {
+        
+        
         Collections.sort(text);
-        System.out.println(text);
+        //System.out.println(text.size());
+        //for (String i : text) {
+        //System.out.println(i);}
+        
     }
+    public void arraySize()
+    {for ( int i=0; i < text.size(); i++){ 
+        System.out.println(text.get(i));
+    }
+}
 }
