@@ -88,15 +88,7 @@ public class ChristopherAndSamom {
             ary.add(word);
         }
     }
-    /**
-     * Send the given string to the console.
-     */
-    public void printout (String s) {
-        System.out.println(s);
-    }
-    /**
-    populates the array with strings
-     */
+    
     public void aryList()
     {
         for( int i=0; i < ary.size(); i++){
